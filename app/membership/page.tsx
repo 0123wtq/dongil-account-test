@@ -123,8 +123,20 @@ export default function MembershipPage() {
             </div>
             <ul className="text-sm flex flex-col gap-2">
               <li className="flex items-start gap-2">
-                <span className="text-muted">✓</span>
-                <span>내 투자 유형과 반복 실수 확인</span>
+                <CheckMark className="text-muted mt-0.5" />
+                <span>내 투자 유형 확인</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckMark className="text-muted mt-0.5" />
+                <span>반복 실수 확인</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckMark className="text-muted mt-0.5" />
+                <span>일회성 진단</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <CheckMark className="text-muted mt-0.5" />
+                <span>무료</span>
               </li>
             </ul>
             <Link
@@ -147,20 +159,20 @@ export default function MembershipPage() {
             </div>
             <ul className="text-sm flex flex-col gap-2 text-inkDark">
               <li className="flex items-start gap-2">
-                <span className="text-danger font-extrabold">✓</span>
+                <CheckMark className="text-danger mt-0.5" />
                 <span>매일 장전·장중·마감 기준 제공</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-danger font-extrabold">✓</span>
-                <span>혼자 흔들리지 않는 투자 루틴 형성</span>
+                <CheckMark className="text-danger mt-0.5" />
+                <span>혼자 흔들리지 않는 루틴 형성</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-danger font-extrabold">✓</span>
-                <span>급등주 추격매수 · FOMO 방지</span>
+                <CheckMark className="text-danger mt-0.5" />
+                <span>장중 FOMO · 추격매수 방지</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-danger font-extrabold">✓</span>
-                <span>돈길식 하체운동 기준 반복 학습</span>
+                <CheckMark className="text-danger mt-0.5" />
+                <span>월 30,000원 (하루 1,000원)</span>
               </li>
             </ul>
             <a

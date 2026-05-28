@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { Disclaimer } from '@/components/Disclaimer';
 import { ScrollProgressBar } from '@/components/ScrollProgressBar';
+import { CheckMark } from '@/components/CheckMark';
+import { getMembershipUrl } from '@/lib/site';
 
 const EMPATHY = [
   '장 시작하자마자 급등주 보고 바로 들어간다',
@@ -29,19 +31,73 @@ const STEPS = [
   },
   {
     step: 'STEP 4',
-    title: '돈길 멤버십방 신청',
-    desc: '하루 1,000원으로 장전·장중·마감 기준을 같이 잡습니다.',
+    title: '하루 1,000원 멤버십방 신청',
+    desc: '커피 한 잔보다 적은 하루 1,000원으로 장전·장중·마감 기준을 같이 잡습니다.',
   },
 ];
 
+const DAILY_PREVIEW = [
+  {
+    time: '08:30',
+    label: '장전',
+    items: [
+      '오늘 조심할 구간 한 줄 정리',
+      '현금비중 점검',
+      '섹터 흐름 체크',
+    ],
+  },
+  {
+    time: '12:30',
+    label: '장중',
+    items: [
+      '급등주 추격매수 방지',
+      'FOMO 체크',
+      '하체운동 기준 확인',
+    ],
+  },
+  {
+    time: '16:00',
+    label: '마감',
+    items: [
+      '오늘 시장 복기',
+      '흔들린 구간 점검',
+      '내일 기준 정리',
+    ],
+  },
+];
+
+const COMPARE = {
+  free: [
+    '내 투자 유형 확인',
+    '반복 실수 확인',
+    '일회성 진단',
+    '무료',
+  ],
+  membership: [
+    '매일 장전·장중·마감 기준 제공',
+    '혼자 흔들리지 않는 루틴 형성',
+    '장중 FOMO·추격매수 방지',
+    '월 30,000원 (하루 1,000원)',
+  ],
+};
+
 export default function HomePage() {
+  const applyUrl = getMembershipUrl();
   return (
     <main className="flex flex-col gap-14">
       {/* HERO */}
       <section className="flex flex-col gap-6 pt-4">
-        <p className="text-gold text-sm font-bold tracking-widest">
-          돈길 계좌체력 진단
-        </p>
+        {/* 후킹 배지 — 손그림 형광펜/밑줄 톤 */}
+        <div className="self-start border-sketch border-gold/40 bg-gold/5 rounded-xl px-4 py-3">
+          <p className="text-base font-extrabold leading-snug">
+            <span className="marker-gold">하루 1,000원</span>으로
+            <br />
+            혼자 매매하는 불안을{' '}
+            <span className="underline decoration-gold decoration-[3px] underline-offset-[5px]">
+              줄이세요
+            </span>
+          </p>
+        </div>
         <h1 className="heading-xl">
           왜 내가 사면 떨어지고
           <br />
@@ -186,7 +242,105 @@ export default function HomePage() {
         </ol>
       </section>
 
-      {/* 유일한 CTA — 페이지 최하단 */}
+      {/* 멤버십방 실체감 — 매일 받는 기준 미리보기 */}
+      <section className="flex flex-col gap-5">
+        <h2 className="heading-md">
+          돈길 멤버십방에서는
+          <br />
+          매일 <span className="marker-gold">이런 기준</span>을 봅니다
+        </h2>
+        <div className="flex flex-col gap-3">
+          {DAILY_PREVIEW.map((s) => (
+            <div
+              key={s.label}
+              className="paper rounded-2xl border-2 border-paperEdge p-5 flex flex-col gap-3 shadow-xl"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="text-xl font-extrabold text-inkDark">{s.time}</span>
+                <span className="text-[10px] tracking-widest text-mutedInk bg-paperEdge/50 px-2 py-0.5 rounded">
+                  {s.label}
+                </span>
+              </div>
+              <ul className="flex flex-col gap-2 text-sm text-inkDark">
+                {s.items.map((it, i) => (
+                  <li key={i} className="flex items-start gap-2 leading-relaxed">
+                    <CheckMark className="text-danger mt-0.5" />
+                    <span>{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <Link
+          href="/routine"
+          className="text-xs text-gold text-center underline underline-offset-4 hover:text-gold-soft"
+        >
+          하루 루틴 자세히 보기 →
+        </Link>
+
+        {/* 하루 1,000원 강조 카피 */}
+        <div className="rounded-2xl border-sketch border-gold/40 bg-gold/5 p-5 mt-2 flex flex-col gap-2">
+          <p className="leading-relaxed font-bold">
+            <span className="marker-gold">하루 1,000원</span>으로
+            <br />
+            장중에 혼자 흔들리는 시간을 줄이세요.
+          </p>
+          <p className="text-sm text-muted leading-relaxed">
+            커피 한 잔보다 적은 하루 1,000원으로
+            <br />
+            장전·장중·마감 기준을 같이 잡습니다.
+          </p>
+        </div>
+      </section>
+
+      {/* 무료 vs 멤버십 비교 티저 */}
+      <section className="flex flex-col gap-4">
+        <h2 className="heading-md">무료 테스트 vs 멤버십방</h2>
+        <div className="flex flex-col gap-3">
+          <div className="rounded-2xl border-2 border-line bg-black/30 p-5 flex flex-col gap-3">
+            <p className="text-xs text-muted tracking-widest">무료 테스트</p>
+            <ul className="text-sm flex flex-col gap-2">
+              {COMPARE.free.map((x) => (
+                <li key={x} className="flex items-start gap-2">
+                  <CheckMark className="text-muted mt-0.5" />
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="paper rounded-2xl border-2 border-gold p-5 flex flex-col gap-3 relative shadow-2xl">
+            <span className="tilt-right absolute -top-3 left-5 text-[10px] tracking-widest bg-danger text-paper px-3 py-1 rounded-md font-extrabold">
+              ★ 추천
+            </span>
+            <p className="text-xs text-mutedInk tracking-widest">돈길 멤버십방</p>
+            <ul className="text-sm text-inkDark flex flex-col gap-2">
+              {COMPARE.membership.map((x) => (
+                <li key={x} className="flex items-start gap-2">
+                  <CheckMark className="text-danger mt-0.5" />
+                  <span>{x}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={applyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl bg-gold text-inkDark px-5 py-3 text-center text-sm font-extrabold btn-paper mt-1"
+            >
+              하루 1,000원으로 신청하기 →
+            </a>
+          </div>
+        </div>
+        <Link
+          href="/membership"
+          className="text-xs text-muted text-center underline underline-offset-4 hover:text-ink"
+        >
+          멤버십 비교·FAQ 자세히 보기 →
+        </Link>
+      </section>
+
+      {/* 유일한 테스트 CTA — 페이지 최하단 */}
       <div className="flex flex-col gap-3">
         <Link
           href="/test"
