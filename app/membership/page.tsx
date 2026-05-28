@@ -65,10 +65,10 @@ export default function MembershipPage() {
       {/* 가격 강조 — 종이 카드 */}
       <section className="paper rounded-2xl border-2 border-paperEdge p-6 flex flex-col gap-3 shadow-2xl text-center">
         <p className="text-xs text-mutedInk tracking-widest">멤버십 가격</p>
-        <p className="text-5xl font-extrabold text-inkDark">월 30,000원</p>
-        <p className="text-lg font-bold text-inkDark">
+        <p className="text-5xl font-extrabold text-inkDark">
           하루 <span className="marker-gold">1,000원</span>
         </p>
+        <p className="text-base text-mutedInk">(월 30,000원)</p>
         <p className="text-sm text-mutedInk leading-relaxed mt-2">
           커피 한 잔보다 적은 하루 1,000원으로
           <br />
@@ -154,8 +154,8 @@ export default function MembershipPage() {
             </span>
             <div>
               <p className="text-xs text-mutedInk tracking-widest mb-1">돈길 멤버십방</p>
-              <p className="text-3xl font-extrabold text-inkDark">월 30,000원</p>
-              <p className="text-xs text-mutedInk mt-1">하루 1,000원</p>
+              <p className="text-3xl font-extrabold text-inkDark">하루 1,000원</p>
+              <p className="text-xs text-mutedInk mt-1">(월 30,000원)</p>
             </div>
             <ul className="text-sm flex flex-col gap-2 text-inkDark">
               <li className="flex items-start gap-2">
@@ -172,7 +172,7 @@ export default function MembershipPage() {
               </li>
               <li className="flex items-start gap-2">
                 <CheckMark className="text-danger mt-0.5" />
-                <span>월 30,000원 (하루 1,000원)</span>
+                <span>하루 1,000원 (월 30,000원)</span>
               </li>
             </ul>
             <a
@@ -181,7 +181,7 @@ export default function MembershipPage() {
               rel="noopener noreferrer"
               className="rounded-2xl bg-gold text-inkDark px-6 py-4 text-center text-base font-extrabold btn-paper"
             >
-              월 30,000원으로 신청하기 →
+              하루 1,000원으로 멤버십방 신청하기 →
             </a>
           </div>
         </div>

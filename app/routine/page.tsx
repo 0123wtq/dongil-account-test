@@ -111,8 +111,8 @@ export default function RoutinePage() {
         <div className="flex items-baseline justify-between border-t border-gold/30 pt-4">
           <span className="text-xs text-muted tracking-widest">멤버십 가격</span>
           <span>
-            <span className="text-2xl font-extrabold text-gold">월 30,000원</span>
-            <span className="text-xs text-muted ml-2">(하루 1,000원)</span>
+            <span className="text-2xl font-extrabold text-gold">하루 1,000원</span>
+            <span className="text-xs text-muted ml-2">(월 30,000원)</span>
           </span>
         </div>
         <a
