@@ -5,12 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: '#0a0a0a',
-        ink: '#f5f5f5',
-        gold: { DEFAULT: '#d4af37', soft: '#f0d068' },
-        danger: { DEFAULT: '#e63946', soft: '#ff6b6b' },
-        muted: '#9a9a9a',
-        line: '#1f1f1f',
+        bg: '#15110c',
+        navy: '#0e1424',
+        paper: '#f0e3c4',
+        paperEdge: '#d8c79d',
+        ink: '#f1e4c7',
+        inkDark: '#28190c',
+        gold: { DEFAULT: '#c99a2a', soft: '#e0b53c' },
+        danger: { DEFAULT: '#8b2a3a', soft: '#b8404f' },
+        muted: '#9a8866',
+        mutedInk: '#7d6b4d',
+        line: '#2e251a',
+        lineInk: '#b8a47e',
       },
       fontFamily: {
         sans: ['Pretendard', 'system-ui', '-apple-system', 'sans-serif'],

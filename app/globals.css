@@ -4,12 +4,19 @@
 
 html,
 body {
-  background: #0a0a0a;
-  color: #f5f5f5;
+  background: #15110c;
+  color: #f1e4c7;
   -webkit-font-smoothing: antialiased;
   word-break: keep-all;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
     'Malgun Gothic', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 10% -10%, rgba(14, 20, 36, 0.6), transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(45, 25, 15, 0.5), transparent 50%);
+  background-attachment: fixed;
 }
 
 @layer utilities {
@@ -30,4 +37,63 @@ body {
     line-height: 1.35;
     font-weight: 700;
   }
+
+  /* 노트 종이 — 가로 줄 미세 텍스처 */
+  .paper {
+    background-color: #f0e3c4;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 27px,
+      rgba(40, 25, 12, 0.08) 27px,
+      rgba(40, 25, 12, 0.08) 28px
+    );
+    color: #28190c;
+  }
+
+  /* 형광펜 강조 */
+  .marker-gold {
+    background-image: linear-gradient(
+      transparent 58%,
+      rgba(201, 154, 42, 0.45) 58%,
+      rgba(201, 154, 42, 0.45) 92%,
+      transparent 92%
+    );
+    background-repeat: no-repeat;
+    padding: 0 0.1em;
+  }
+  .marker-danger {
+    background-image: linear-gradient(
+      transparent 58%,
+      rgba(139, 42, 58, 0.4) 58%,
+      rgba(139, 42, 58, 0.4) 92%,
+      transparent 92%
+    );
+    background-repeat: no-repeat;
+    padding: 0 0.1em;
+  }
+
+  /* 종이 라벨 버튼 — 눌림 그림자 */
+  .btn-paper {
+    box-shadow:
+      0 3px 0 0 rgba(40, 25, 12, 0.65),
+      0 6px 16px rgba(0, 0, 0, 0.45);
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+  }
+  .btn-paper:active {
+    transform: translateY(2px);
+    box-shadow:
+      0 1px 0 0 rgba(40, 25, 12, 0.65),
+      0 2px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  /* 손그림 점선 테두리 */
+  .border-sketch {
+    border-style: dashed;
+    border-width: 2px;
+  }
+
+  /* 약간 기울어진 스탬프/배지 */
+  .tilt-left { transform: rotate(-2deg); }
+  .tilt-right { transform: rotate(1.5deg); }
 }

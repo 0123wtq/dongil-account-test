@@ -32,7 +32,6 @@ export default function TestPage() {
       const result = calcScore(next);
       storage.saveAnswers({ answers: next, completedAt: Date.now() });
       storage.saveResult(result);
-      storage.setUnlocked(false);
       router.push('/result');
     }
   };
@@ -44,7 +43,7 @@ export default function TestPage() {
       <ProgressBar current={idx + 1} total={QUESTIONS.length} />
 
       <div>
-        <p className="text-gold text-sm font-bold mb-3">Q{idx + 1}.</p>
+        <p className="text-gold text-sm font-bold mb-3 tracking-widest">Q{idx + 1}.</p>
         <h2 className="heading-md">{q.text}</h2>
       </div>
 
@@ -53,7 +52,7 @@ export default function TestPage() {
           <button
             key={opt.value}
             onClick={() => pick(opt.value)}
-            className="w-full text-left rounded-2xl border border-line px-5 py-4 hover:border-gold/60 transition-colors"
+            className="w-full text-left rounded-2xl border-2 border-line bg-black/30 px-5 py-4 hover:border-gold/60 transition-colors"
           >
             <span className="text-gold font-bold mr-3">{opt.value}</span>
             <span>{opt.label}</span>

@@ -5,8 +5,9 @@ import type { ScoreResult, AnswerSet } from './types';
 const KEYS = {
   answers: 'dongil:answers',
   result: 'dongil:result',
-  unlocked: 'dongil:report-unlocked',
 } as const;
+
+const LEGACY_KEYS = ['dongil:report-unlocked'];
 
 function safeGet<T>(key: string): T | null {
   if (typeof window === 'undefined') return null;
@@ -30,10 +31,10 @@ export const storage = {
   loadAnswers() { return safeGet<AnswerSet>(KEYS.answers); },
   saveResult(r: ScoreResult) { safeSet(KEYS.result, r); },
   loadResult() { return safeGet<ScoreResult>(KEYS.result); },
-  setUnlocked(v: boolean) { safeSet(KEYS.unlocked, v); },
-  isUnlocked() { return safeGet<boolean>(KEYS.unlocked) === true; },
   reset() {
     if (typeof window === 'undefined') return;
-    Object.values(KEYS).forEach((k) => window.localStorage.removeItem(k));
+    [...Object.values(KEYS), ...LEGACY_KEYS].forEach((k) =>
+      window.localStorage.removeItem(k)
+    );
   },
 };

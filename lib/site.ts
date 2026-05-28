@@ -1,8 +1,7 @@
 export const SITE = {
   brand: '돈길 계좌체력 진단',
-  reportPrice: 990,
-  reportProductName: '돈길 계좌체력 상세 리포트',
   membershipPrice: 30000,
+  membershipDailyPrice: 1000,
   membershipProductName: '돈길 계좌체력 멤버십',
 };
 
