@@ -190,6 +190,12 @@ export default function ResultPage() {
             하루 1,000원으로 멤버십방 신청하기 →
           </a>
           <Link
+            href="/routine"
+            className="text-xs text-gold text-center underline underline-offset-4 hover:text-gold-soft"
+          >
+            돈길 멤버십방의 하루 루틴 미리 보기 →
+          </Link>
+          <Link
             href="/membership"
             className="text-xs text-muted text-center underline underline-offset-4 hover:text-ink"
           >

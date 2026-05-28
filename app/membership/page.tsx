@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getMembershipUrl } from '@/lib/site';
 import { Disclaimer } from '@/components/Disclaimer';
+import { CheckMark } from '@/components/CheckMark';
 
 const FAQ = [
   {
@@ -22,6 +23,10 @@ const FAQ = [
   {
     q: '하루 1,000원이라는 말은 무슨 뜻인가요?',
     a: '월 30,000원을 30일 기준으로 나눈 금액입니다. 하루 약 1,000원으로 장중에 혼자 흔들리는 시간을 줄이는 것이 목표입니다.',
+  },
+  {
+    q: '카톡방에서는 어떤 내용을 받나요?',
+    a: '장전 시장 체크, 장중 멘탈 기준, 급등주 추격매수 방지, ETF/섹터 흐름, 마감 복기, 초보 투자 루틴, 분할매수·현금비중·조정장 대응 기준을 제공합니다.',
   },
 ];
 
@@ -90,11 +95,20 @@ export default function MembershipPage() {
               key={x}
               className="rounded-2xl border-2 border-line bg-black/30 p-4 flex items-start gap-3"
             >
-              <span className="text-gold font-extrabold shrink-0">✓</span>
+              <CheckMark className="text-gold mt-1" />
               <span>{x}</span>
             </li>
           ))}
         </ul>
+        <Link
+          href="/routine"
+          className="rounded-2xl border-sketch border-gold/50 bg-gold/5 px-6 py-4 text-center text-sm font-bold hover:bg-gold/10 transition-colors mt-2"
+        >
+          돈길 하루 루틴 미리보기 →
+        </Link>
+        <p className="text-xs text-muted text-center">
+          멤버십방에서 매일 받는 장전·장중·마감 메모 형식
+        </p>
       </section>
 
       {/* 2단계 비교 */}
@@ -110,15 +124,7 @@ export default function MembershipPage() {
             <ul className="text-sm flex flex-col gap-2">
               <li className="flex items-start gap-2">
                 <span className="text-muted">✓</span>
-                <span>내 투자 유형 확인</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-muted">✓</span>
-                <span>계좌체력 점수</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-muted">✓</span>
-                <span>반복 실수 TOP 3 확인</span>
+                <span>내 투자 유형과 반복 실수 확인</span>
               </li>
             </ul>
             <Link
