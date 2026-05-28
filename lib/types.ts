@@ -35,7 +35,7 @@ export interface ScoreResult {
   typeName: string;
   fitnessScore: number;
   topRiskLabel: string;
-  shortDiagnosis: string;
+  shortDiagnosis: string[];
   risks: RiskScores;
 }
 
