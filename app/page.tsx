@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Disclaimer } from '@/components/Disclaimer';
+import { ScrollProgressBar } from '@/components/ScrollProgressBar';
 
 const EMPATHY = [
   '장 시작하자마자 급등주 보고 바로 들어간다',
@@ -54,16 +55,29 @@ export default function HomePage() {
           좋은 종목을 사도 계좌는 흔들립니다.
         </p>
 
-        {/* HERO CTA #1 */}
-        <Link
-          href="/test"
-          className="rounded-2xl bg-gold text-inkDark px-6 py-5 text-center text-lg font-extrabold btn-paper mt-2"
-        >
-          무료로 내 계좌체력 테스트하기 →
-        </Link>
-        <p className="text-xs text-muted text-center -mt-3">
-          10문항, 약 2분 · 로그인 없음 · 결과는 브라우저에만 저장
-        </p>
+        {/* 스크롤 유도 — 히어로 CTA 없음, 본문을 먼저 읽게 유도 */}
+        <div className="flex flex-col items-center gap-3 pt-4 text-muted">
+          <p className="text-sm leading-relaxed text-center">
+            아래로 내려서<br />
+            내 계좌 습관을 먼저 확인해보세요
+          </p>
+          <svg
+            width="22"
+            height="36"
+            viewBox="0 0 22 36"
+            fill="none"
+            className="text-gold/80 animate-bounce"
+            aria-hidden
+          >
+            <path
+              d="M11 3 C 10.4 12, 11.6 22, 11 30 M11 30 L4 22 M11 30 L18 22"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
       </section>
 
       {/* SAMPLE DIAGNOSIS — 종이 노트 카드 */}
@@ -172,7 +186,7 @@ export default function HomePage() {
         </ol>
       </section>
 
-      {/* 하단 CTA #2 — 4단계 직후 자연스럽게 */}
+      {/* 유일한 CTA — 페이지 최하단 */}
       <div className="flex flex-col gap-3">
         <Link
           href="/test"
@@ -180,12 +194,17 @@ export default function HomePage() {
         >
           내 계좌체력 무료로 확인하기 →
         </Link>
-        <p className="text-xs text-muted text-center">
+        <p className="text-xs text-muted text-center leading-relaxed">
+          10문항, 약 2분 · 로그인 없음 · 결과는 브라우저에만 저장
+          <br />
           하루 1,000원으로 내 계좌 습관을 바꾸는 방, 돈길 멤버십방
         </p>
       </div>
 
       <Disclaimer />
+
+      {/* 우측 스크롤 진행 인디케이터 (랜딩 전용) */}
+      <ScrollProgressBar />
     </main>
   );
 }
